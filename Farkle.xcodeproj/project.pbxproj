@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		6B04F8EE1ABB4FB800B7C078 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F8ED1ABB4FB800B7C078 /* main.m */; };
 		6B04F8F11ABB4FB800B7C078 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F8F01ABB4FB800B7C078 /* AppDelegate.m */; };
-		6B04F8F41ABB4FB800B7C078 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F8F31ABB4FB800B7C078 /* ViewController.m */; };
 		6B04F8F71ABB4FB800B7C078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B04F8F51ABB4FB800B7C078 /* Main.storyboard */; };
 		6B04F8F91ABB4FB800B7C078 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B04F8F81ABB4FB800B7C078 /* Images.xcassets */; };
 		6B04F8FC1ABB4FB800B7C078 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B04F8FA1ABB4FB800B7C078 /* LaunchScreen.xib */; };
 		6B04F9081ABB4FB800B7C078 /* FarkleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9071ABB4FB800B7C078 /* FarkleTests.m */; };
+		6B04F9131ABB51F600B7C078 /* FKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9121ABB51F600B7C078 /* FKHomeViewController.m */; };
+		6B04F9191ABB53BC00B7C078 /* FKDieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */; };
+		6B04F91C1ABB7F3F00B7C078 /* FKRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,18 @@
 		6B04F8ED1ABB4FB800B7C078 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B04F8EF1ABB4FB800B7C078 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B04F8F01ABB4FB800B7C078 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6B04F8F21ABB4FB800B7C078 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6B04F8F31ABB4FB800B7C078 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6B04F8F61ABB4FB800B7C078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B04F8F81ABB4FB800B7C078 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6B04F8FB1ABB4FB800B7C078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6B04F9011ABB4FB800B7C078 /* FarkleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarkleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B04F9061ABB4FB800B7C078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B04F9071ABB4FB800B7C078 /* FarkleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarkleTests.m; sourceTree = "<group>"; };
+		6B04F9111ABB51F600B7C078 /* FKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKHomeViewController.h; path = Farkle/Views/FKHomeViewController.h; sourceTree = "<group>"; };
+		6B04F9121ABB51F600B7C078 /* FKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKHomeViewController.m; path = Farkle/Views/FKHomeViewController.m; sourceTree = "<group>"; };
+		6B04F9171ABB53BC00B7C078 /* FKDieLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKDieLabel.h; path = Farkle/Controllers/FKDieLabel.h; sourceTree = "<group>"; };
+		6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKDieLabel.m; path = Farkle/Controllers/FKDieLabel.m; sourceTree = "<group>"; };
+		6B04F91A1ABB7F3F00B7C078 /* FKRoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKRoll.h; path = Farkle/Models/FKRoll.h; sourceTree = "<group>"; };
+		6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKRoll.m; path = Farkle/Models/FKRoll.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 		6B04F8DF1ABB4FB800B7C078 = {
 			isa = PBXGroup;
 			children = (
+				6B04F9151ABB534800B7C078 /* Models */,
+				6B04F9141ABB532C00B7C078 /* Views */,
+				6B04F9161ABB535600B7C078 /* Controllers */,
 				6B04F8EA1ABB4FB800B7C078 /* Farkle */,
 				6B04F9041ABB4FB800B7C078 /* FarkleTests */,
 				6B04F8E91ABB4FB800B7C078 /* Products */,
@@ -83,11 +92,7 @@
 			children = (
 				6B04F8EF1ABB4FB800B7C078 /* AppDelegate.h */,
 				6B04F8F01ABB4FB800B7C078 /* AppDelegate.m */,
-				6B04F8F21ABB4FB800B7C078 /* ViewController.h */,
-				6B04F8F31ABB4FB800B7C078 /* ViewController.m */,
-				6B04F8F51ABB4FB800B7C078 /* Main.storyboard */,
 				6B04F8F81ABB4FB800B7C078 /* Images.xcassets */,
-				6B04F8FA1ABB4FB800B7C078 /* LaunchScreen.xib */,
 				6B04F8EB1ABB4FB800B7C078 /* Supporting Files */,
 			);
 			path = Farkle;
@@ -117,6 +122,35 @@
 				6B04F9061ABB4FB800B7C078 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B04F9141ABB532C00B7C078 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B04F8F51ABB4FB800B7C078 /* Main.storyboard */,
+				6B04F8FA1ABB4FB800B7C078 /* LaunchScreen.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6B04F9151ABB534800B7C078 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B04F91A1ABB7F3F00B7C078 /* FKRoll.h */,
+				6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6B04F9161ABB535600B7C078 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B04F9111ABB51F600B7C078 /* FKHomeViewController.h */,
+				6B04F9121ABB51F600B7C078 /* FKHomeViewController.m */,
+				6B04F9171ABB53BC00B7C078 /* FKDieLabel.h */,
+				6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +253,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B04F8F41ABB4FB800B7C078 /* ViewController.m in Sources */,
 				6B04F8F11ABB4FB800B7C078 /* AppDelegate.m in Sources */,
+				6B04F91C1ABB7F3F00B7C078 /* FKRoll.m in Sources */,
+				6B04F9131ABB51F600B7C078 /* FKHomeViewController.m in Sources */,
+				6B04F9191ABB53BC00B7C078 /* FKDieLabel.m in Sources */,
 				6B04F8EE1ABB4FB800B7C078 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +286,7 @@
 				6B04F8F61ABB4FB800B7C078 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Farkle;
 			sourceTree = "<group>";
 		};
 		6B04F8FA1ABB4FB800B7C078 /* LaunchScreen.xib */ = {
@@ -258,6 +295,7 @@
 				6B04F8FB1ABB4FB800B7C078 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = Farkle;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

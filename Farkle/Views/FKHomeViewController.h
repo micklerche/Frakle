@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FKHomeViewController.h
 //  Farkle
 //
 //  Created by Mick Lerche on 3/19/15.
@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+typedef enum {
+    For1 = 100,
+    For5 = 50
+} PointValue;
 
+@interface FKHomeViewController : UIViewController
 
 @end
-
