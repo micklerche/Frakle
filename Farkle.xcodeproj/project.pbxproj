@@ -16,6 +16,10 @@
 		6B04F9131ABB51F600B7C078 /* FKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9121ABB51F600B7C078 /* FKHomeViewController.m */; };
 		6B04F9191ABB53BC00B7C078 /* FKDieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */; };
 		6B04F91C1ABB7F3F00B7C078 /* FKRoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */; };
+		6B04F91F1ABC5C2D00B7C078 /* FKPlayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F91E1ABC5C2D00B7C078 /* FKPlayers.m */; };
+		6B04F9221ABC5DA600B7C078 /* FKScoreBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9211ABC5DA600B7C078 /* FKScoreBoardViewController.m */; };
+		6B04F9251ABC5DEA00B7C078 /* FKPlayerSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B04F9241ABC5DEA00B7C078 /* FKPlayerSelectViewController.m */; };
+		6B3415461ABD14AF00D42609 /* FKScores.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3415451ABD14AF00D42609 /* FKScores.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,14 @@
 		6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKDieLabel.m; path = Farkle/Controllers/FKDieLabel.m; sourceTree = "<group>"; };
 		6B04F91A1ABB7F3F00B7C078 /* FKRoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKRoll.h; path = Farkle/Models/FKRoll.h; sourceTree = "<group>"; };
 		6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKRoll.m; path = Farkle/Models/FKRoll.m; sourceTree = "<group>"; };
+		6B04F91D1ABC5C2D00B7C078 /* FKPlayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKPlayers.h; path = Farkle/Models/FKPlayers.h; sourceTree = "<group>"; };
+		6B04F91E1ABC5C2D00B7C078 /* FKPlayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKPlayers.m; path = Farkle/Models/FKPlayers.m; sourceTree = "<group>"; };
+		6B04F9201ABC5DA600B7C078 /* FKScoreBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKScoreBoardViewController.h; path = Farkle/Controllers/FKScoreBoardViewController.h; sourceTree = "<group>"; };
+		6B04F9211ABC5DA600B7C078 /* FKScoreBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKScoreBoardViewController.m; path = Farkle/Controllers/FKScoreBoardViewController.m; sourceTree = "<group>"; };
+		6B04F9231ABC5DEA00B7C078 /* FKPlayerSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKPlayerSelectViewController.h; path = Farkle/Controllers/FKPlayerSelectViewController.h; sourceTree = "<group>"; };
+		6B04F9241ABC5DEA00B7C078 /* FKPlayerSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKPlayerSelectViewController.m; path = Farkle/Controllers/FKPlayerSelectViewController.m; sourceTree = "<group>"; };
+		6B3415441ABD14AF00D42609 /* FKScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKScores.h; path = Farkle/Models/FKScores.h; sourceTree = "<group>"; };
+		6B3415451ABD14AF00D42609 /* FKScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKScores.m; path = Farkle/Models/FKScores.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +150,10 @@
 			children = (
 				6B04F91A1ABB7F3F00B7C078 /* FKRoll.h */,
 				6B04F91B1ABB7F3F00B7C078 /* FKRoll.m */,
+				6B04F91D1ABC5C2D00B7C078 /* FKPlayers.h */,
+				6B04F91E1ABC5C2D00B7C078 /* FKPlayers.m */,
+				6B3415441ABD14AF00D42609 /* FKScores.h */,
+				6B3415451ABD14AF00D42609 /* FKScores.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -145,10 +161,14 @@
 		6B04F9161ABB535600B7C078 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6B04F9201ABC5DA600B7C078 /* FKScoreBoardViewController.h */,
+				6B04F9211ABC5DA600B7C078 /* FKScoreBoardViewController.m */,
 				6B04F9111ABB51F600B7C078 /* FKHomeViewController.h */,
 				6B04F9121ABB51F600B7C078 /* FKHomeViewController.m */,
 				6B04F9171ABB53BC00B7C078 /* FKDieLabel.h */,
 				6B04F9181ABB53BC00B7C078 /* FKDieLabel.m */,
+				6B04F9231ABC5DEA00B7C078 /* FKPlayerSelectViewController.h */,
+				6B04F9241ABC5DEA00B7C078 /* FKPlayerSelectViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,7 +276,11 @@
 				6B04F8F11ABB4FB800B7C078 /* AppDelegate.m in Sources */,
 				6B04F91C1ABB7F3F00B7C078 /* FKRoll.m in Sources */,
 				6B04F9131ABB51F600B7C078 /* FKHomeViewController.m in Sources */,
+				6B3415461ABD14AF00D42609 /* FKScores.m in Sources */,
+				6B04F91F1ABC5C2D00B7C078 /* FKPlayers.m in Sources */,
+				6B04F9221ABC5DA600B7C078 /* FKScoreBoardViewController.m in Sources */,
 				6B04F9191ABB53BC00B7C078 /* FKDieLabel.m in Sources */,
+				6B04F9251ABC5DEA00B7C078 /* FKPlayerSelectViewController.m in Sources */,
 				6B04F8EE1ABB4FB800B7C078 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +474,7 @@
 				6B04F90D1ABB4FB800B7C078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B04F90E1ABB4FB800B7C078 /* Build configuration list for PBXNativeTarget "FarkleTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +483,7 @@
 				6B04F9101ABB4FB800B7C078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IdS-k5-hX8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -124,6 +124,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="user1Score" destination="M1t-H4-4g8" id="IP6-Zr-jbn"/>
                         <outlet property="user2Score" destination="HOh-M6-amx" id="WID-mF-ClP"/>
@@ -167,6 +169,67 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+        </scene>
+        <!--Score Board View Controller-->
+        <scene sceneID="xDa-qQ-bPm">
+            <objects>
+                <viewController id="8OR-mz-f08" customClass="FKScoreBoardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T0K-SA-V2a"/>
+                        <viewControllerLayoutGuide type="bottom" id="ynH-Ui-Q3g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k19-mn-zaW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ko9-Ex-ZA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="23"/>
+        </scene>
+        <!--Player Select View Controller-->
+        <scene sceneID="2sZ-6G-lEE">
+            <objects>
+                <viewController id="9jK-yJ-o0c" customClass="FKPlayerSelectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aAh-1L-luI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bjn-RN-qkH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CkB-6z-79h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iaz-3x-FvS">
+                        <barButtonItem key="rightBarButtonItem" title="Start Game" id="VbI-Qz-d59">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="show" id="aKf-jd-MIg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esy-ci-73w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9Xv-1X-GTn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IdS-k5-hX8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zLF-fI-FPK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9jK-yJ-o0c" kind="relationship" relationship="rootViewController" id="zqw-JJ-rtX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5nH-cm-Sgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="711"/>
         </scene>
     </scenes>
 </document>
