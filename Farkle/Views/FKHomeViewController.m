@@ -23,6 +23,8 @@
 @property NSMutableArray *rollCounts;
 @property NSMutableArray *tempRollCounts;
 
+@property int currentPlayerIndex;
+
 // this is the permanent banked scores
 //public @property NSMutableArray *players;
 
@@ -37,64 +39,51 @@
 
 @implementation FKHomeViewController
 
+
+#pragma mark - UI play area
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - view/segue events
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FKScoreBoardViewController *svc = segue.destinationViewController;
+    svc.players = self.players;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dice = [NSMutableArray new];
     self.rolls = [NSMutableArray new];
-    ///self.rollScores = [NSMutableArray new];
+    self.RollCounts = [NSMutableArray new];
+    [self resetRollCounts];
 
     for (FKDieLabel *die in self.diceCollection) {
         die.delegate = self;
     }
 
-    self.RollCounts = [NSMutableArray new];
-    [self resetRollCounts];
-
-
-
+    self.currentPlayerIndex = 0;
+    self.title = ((FKPlayer *)self.players[self.currentPlayerIndex]).gamerHandle;
 }
 
-- (void)resetRollCounts {
-    [self.rollCounts removeAllObjects];
-    for (int i = 0; i < 7; i++) {
-        [self.rollCounts addObject:[[NSNumber alloc]initWithInt:0]];
-    }
-}
-
-- (void)resetTempRollCounts {
-    [self.tempRollCounts removeAllObjects];
-    for (int i = 0; i < 7; i++) {
-        [self.rollCounts addObject:[[NSNumber alloc]initWithInt:0]];
-    }
-}
-
-- (BOOL)allDicePlayed {
-    BOOL allDicePlayed = YES;
-    for (FKDieLabel *die in self.diceCollection) {
-        if (![die.backgroundColor isEqual:[UIColor grayColor] ]){
-            allDicePlayed = NO;
-            break;
-        }
-    }
-    return allDicePlayed;
-}
-
-- (void)refreshBoard {
-    [self rollCounts];
-    for (FKDieLabel *die in self.diceCollection) {
-        die.backgroundColor = [UIColor greenColor];
-    }
-
-}
 
 #pragma mark - button events
-
 
 - (IBAction)onRollButtonPressed:(id)sender {
     self.rollCounter++;
 
     if ([self allDicePlayed]) {
         self.turnScore = self.turnScore + self.roundScore;
+
         self.roundScore = 0;
         [self refreshBoard];
         self.rollCounter = 1;
@@ -119,9 +108,8 @@
     }
 }
 
-
 - (IBAction)onBankButtonPressed:(id)sender {
-    FKPlayer *player = self.players[0];
+    FKPlayer *player = self.players[self.currentPlayerIndex];
     player.score = player.score + self.turnScore + self.roundScore;
 
     self.turnScore = 0;
@@ -134,8 +122,15 @@
         die.backgroundColor = [UIColor grayColor];
     }
     [self resetRollCounts];
+    [self resetTempRollCounts];
 
-    // TODO: switch palyers
+
+    // TODO: switch player
+    self.currentPlayerIndex++;
+    if (self.currentPlayerIndex == self.players.count) {
+        self.currentPlayerIndex = 0;
+    }
+    self.title = ((FKPlayer *)self.players[self.currentPlayerIndex]).gamerHandle;
 
 }
 
@@ -148,7 +143,8 @@
     }
 }
 
-#pragma mark - Scoring implementation
+
+#pragma mark - scoring implementation
 
 - (void)dieToBeHeld:(id)die {
     FKDieLabel *heldDie = (FKDieLabel *)die;
@@ -175,20 +171,15 @@
     self.tempRollCounts = [[NSMutableArray alloc] initWithArray:self.rollCounts copyItems:YES];
 
     scoreForRoll += [self checkForSix];
-    //if ([self isCalculateScoreComplete]) {return;}
     scoreForRoll += [self checkForStraight];
-    //if ([self isCalculateScoreComplete]) {return;}
     scoreForRoll += [self checkForThreePairs];
-    //if ([self isCalculateScoreComplete]) {return;}
 
     scoreForRoll += [self checkForThrees];
     scoreForRoll += [self checkForThrees];
-    //if ([self isCalculateScoreComplete]) {return;}
     scoreForRoll += [self checkForSingles];
-    //if ([self isCalculateScoreComplete]) {return;}
 
     self.roundScore = scoreForRoll;
-    self.user1Score.text = [NSString stringWithFormat:@"%i", scoreForRoll];
+    self.user1Score.text = [NSString stringWithFormat:@"%i", scoreForRoll + self.turnScore];
 
 }
 
@@ -286,60 +277,41 @@
 }
 
 
-//
-//- (BOOL)isCalculateScoreComplete {
-//    int remainingHolds = 0;
-//    for (NSNumber *count in self.tempRollCounts) {
-//        remainingHolds += [count integerValue];
-//    }
-//    return remainingHolds == 0;
-//
-//}
-//
-//
-//
-//- (int)scoreForRoll:(int)count of:(PointValue)diceValue {
-//    int score = 0;
-//    switch (count) {
-//        case 6: score += 2000; break;
-//        case 5: score += 1000 + (2 * diceValue); break;
-//        case 4: score += 1000 + diceValue; break;
-//        case 3: score += 1000; break;
-//        case 2: score += 2 * diceValue; break;
-//        case 1: score += diceValue; break;
-//    }
-//    return score;
-//}
-//
-//
-//
+#pragma mark - helpers
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    FKScoreBoardViewController *svc = segue.destinationViewController;
-    svc.players = self.players;
-
-
-
+- (void)resetRollCounts {
+    [self.rollCounts removeAllObjects];
+    for (int i = 0; i < 7; i++) {
+        [self.rollCounts addObject:[[NSNumber alloc]initWithInt:0]];
+    }
 }
 
+- (void)resetTempRollCounts {
+    [self.tempRollCounts removeAllObjects];
+    for (int i = 0; i < 7; i++) {
+        [self.rollCounts addObject:[[NSNumber alloc]initWithInt:0]];
+    }
+}
 
+- (BOOL)allDicePlayed {
+    BOOL allDicePlayed = YES;
+    for (FKDieLabel *die in self.diceCollection) {
+        if (![die.backgroundColor isEqual:[UIColor grayColor] ]){
+            allDicePlayed = NO;
+            break;
+        }
+    }
+    return allDicePlayed;
+}
 
+- (void)refreshBoard {
+    //[self rollCounts];
+    for (FKDieLabel *die in self.diceCollection) {
+        die.backgroundColor = [UIColor greenColor];
+    }
+    [self resetRollCounts];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

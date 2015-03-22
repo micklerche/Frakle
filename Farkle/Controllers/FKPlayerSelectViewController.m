@@ -22,8 +22,10 @@
     [super viewDidLoad];
 
     self.players = [NSMutableArray arrayWithObjects:
-                    [[FKPlayer alloc]initWithName:@"Mick" gamerHandle:@"McBiker" andImage:[UIImage imageNamed:@"McBiker"]]
-                    , nil];
+                    [[FKPlayer alloc]initWithName:@"Mack" gamerHandle:@"McBiker" andImage:[UIImage imageNamed:@"McBiker"]],
+                    [[FKPlayer alloc]initWithName:@"Steve" gamerHandle:@"McApple" andImage:[UIImage imageNamed:@"McApple"]],
+                    [[FKPlayer alloc]initWithName:@"Daffy" gamerHandle:@"McDuck" andImage:[UIImage imageNamed:@"McDuck"]],
+                    nil];
 
 
 

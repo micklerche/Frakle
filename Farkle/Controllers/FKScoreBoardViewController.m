@@ -31,7 +31,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    FKPlayer *player = self.players[0];
+    FKPlayer *player = self.players[indexPath.row];
 
     cell.textLabel.text = player.gamerHandle;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Score: %li", player.score];
