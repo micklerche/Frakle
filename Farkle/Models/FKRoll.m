@@ -10,7 +10,7 @@
 
 @implementation FKRoll
 
-- (instancetype)initWithPlayer:(int)player roll:(int)roll andValue:(int)value {
+- (instancetype)initWithPlayer:(int)player roll:(int)roll andValue:(long)value {
     self = [ super init];
     if (self) {
         self.player = player;

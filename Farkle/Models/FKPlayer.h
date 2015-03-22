@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface FKPlayers : NSObject
+@interface FKPlayer : NSObject
 @property NSString *name;
 @property NSString *gamerHandle;
-@property NSString *image;
+@property UIImage *image;
 @property long score;
+
+- (instancetype)initWithName:(NSString *)name gamerHandle:(NSString *)gamerHandle andImage:(UIImage *)image;
+
 
 @end

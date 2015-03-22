@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FKScoreBoardViewController : UIViewController
+@property NSMutableArray *players;
 
 @end

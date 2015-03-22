@@ -14,5 +14,6 @@ typedef enum {
 } PointValue;
 
 @interface FKHomeViewController : UIViewController
+@property NSMutableArray *players;
 
 @end
