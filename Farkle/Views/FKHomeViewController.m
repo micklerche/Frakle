@@ -12,7 +12,7 @@
 #import "FKPlayer.h"
 #import "FKScoreBoardViewController.h"
 
-@interface FKHomeViewController () <DieLabelDelegate>
+@interface FKHomeViewController () <DieLabelDelegate, UICollisionBehaviorDelegate>
 @property (nonatomic, retain) IBOutletCollection(FKDieLabel) NSArray *diceCollection;
 @property NSMutableArray *dice;
 @property NSMutableArray *rolls;
@@ -34,6 +34,16 @@
 // this is the score for current dice rolls 1 - 6
 @property int roundScore;
 
+// UI Stuff
+@property (strong, nonatomic) UIDynamicAnimator *dynamicAnimator;
+@property (strong, nonatomic) UICollisionBehavior *collisionBehavior;
+@property (strong, nonatomic) IBOutlet UIView *boxView;
+@property CGPoint startPoint1;
+@property CGPoint startPoint2;
+@property CGPoint startPoint3;
+@property CGPoint startPoint4;
+@property CGPoint startPoint5;
+@property CGPoint startPoint6;
 
 @end
 
@@ -42,15 +52,65 @@
 
 #pragma mark - UI play area
 
+- (NSArray *)getDiceToRoll {
+    NSMutableArray *activeDice = [NSMutableArray new];
+    for (FKDieLabel *die in self.diceCollection) {
+        if (die.backgroundColor != [UIColor grayColor]) {
+            [activeDice addObject:die];
+        }
+    }
+    return (activeDice.count > 0) ? activeDice : self.diceCollection;
+}
+
+- (void)setupAnimation {
+
+    CGFloat flt = arc4random_uniform(100);
+    CGFloat flt2 = arc4random_uniform(100);
+    NSLog(@"%f %F", flt, flt2);
+    self.dynamicAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.boxView];
 
 
+    UIGravityBehavior* gravityBehavior = [[UIGravityBehavior alloc] initWithItems:[self getDiceToRoll]];
+    gravityBehavior.magnitude = 0.7; //flt/1000;
+    CGVector cgv = CGVectorMake(flt / (((int)flt % 2 == 1) ? 100 : -100), flt2 /(((int)flt2 % 2 == 1) ? 100 : -100));
+    gravityBehavior.gravityDirection = cgv;
+    [self.dynamicAnimator addBehavior:gravityBehavior];
 
+    self.collisionBehavior = [[UICollisionBehavior alloc] initWithItems:self.diceCollection];
+    self.collisionBehavior.collisionDelegate = self;
+    self.collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
 
+    [self.collisionBehavior addBoundaryWithIdentifier:@"Top" fromPoint:CGPointMake(1.0, 1.0) toPoint:CGPointMake(1000.0, 1.0)];
+    [self.collisionBehavior addBoundaryWithIdentifier:@"Left" fromPoint:CGPointMake(1.0, 1.0) toPoint:CGPointMake(1.0, 1000.0)];
+    [self.collisionBehavior addBoundaryWithIdentifier:@"Right" fromPoint:CGPointMake(1000.0, 1.0) toPoint:CGPointMake(1000.0, 1000.0)];
+    [self.collisionBehavior addBoundaryWithIdentifier:@"Bottom" fromPoint:CGPointMake(1.0, 1000.0) toPoint:CGPointMake(1000.0, 1000.0)];
+    [self.dynamicAnimator addBehavior:self.collisionBehavior];
 
+    UIDynamicItemBehavior *elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:self.diceCollection];
+    elasticityBehavior.elasticity = 0.75; //flt/100;
+    elasticityBehavior.allowsRotation = YES;
+    elasticityBehavior.friction = 0.0;
+    [self.dynamicAnimator addBehavior:elasticityBehavior];
 
+}
 
+- (void)collisionBehavior:(UICollisionBehavior *)behavior endedContactForItem: (id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier {
+    [self setupAnimation];
+}
 
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if ( event.subtype == UIEventSubtypeMotionShake ) {
+        [self onRollButtonPressed:nil];
+    }
 
+    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] ) {
+        [super motionEnded:motion withEvent:event];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
 
 
 #pragma mark - view/segue events
@@ -62,6 +122,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.startPoint1 = ((UILabel *)self.diceCollection[0]).center;
+    self.startPoint2 = ((UILabel *)self.diceCollection[1]).center;
+    self.startPoint3 = ((UILabel *)self.diceCollection[2]).center;
+    self.startPoint4 = ((UILabel *)self.diceCollection[3]).center;
+    self.startPoint5 = ((UILabel *)self.diceCollection[4]).center;
+    self.startPoint6 = ((UILabel *)self.diceCollection[5]).center;
+
     self.dice = [NSMutableArray new];
     self.rolls = [NSMutableArray new];
     self.RollCounts = [NSMutableArray new];
@@ -73,6 +141,11 @@
 
     self.currentPlayerIndex = 0;
     self.title = ((FKPlayer *)self.players[self.currentPlayerIndex]).gamerHandle;
+
+    // UI stuff
+    //[self setupAnimation];
+    [self refreshBoard];
+
 }
 
 
@@ -80,6 +153,14 @@
 
 - (IBAction)onRollButtonPressed:(id)sender {
     self.rollCounter++;
+
+    ((UILabel *)self.diceCollection[0]).center = self.startPoint1;
+    ((UILabel *)self.diceCollection[1]).center = self.startPoint2;
+    ((UILabel *)self.diceCollection[2]).center = self.startPoint3;
+    ((UILabel *)self.diceCollection[3]).center = self.startPoint4;
+    ((UILabel *)self.diceCollection[4]).center = self.startPoint5;
+    ((UILabel *)self.diceCollection[5]).center = self.startPoint6;
+
 
     if ([self allDicePlayed]) {
         self.turnScore = self.turnScore + self.roundScore;
@@ -106,6 +187,7 @@
             
         }
     }
+    [self setupAnimation];
 }
 
 - (IBAction)onBankButtonPressed:(id)sender {
@@ -150,19 +232,19 @@
     FKDieLabel *heldDie = (FKDieLabel *)die;
     if (heldDie.backgroundColor == [UIColor grayColor]) { return; }
 
+    heldDie.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
+
     [self.dice addObject:die];
     ((FKDieLabel *)die).backgroundColor = [UIColor grayColor];
 
     [self.rolls addObject:[[FKRoll alloc]initWithPlayer:self.player roll:self.rollCounter andValue:((FKDieLabel *)die).tag]];
-    NSLog(@"Player:%i  Roll: %i  Value: %li", self.player, self.rollCounter, ((FKDieLabel *)die).tag);
+    NSLog(@"Player:%i  Roll: %i  Value: %li", self.player, self.rollCounter, (long)((FKDieLabel *)die).tag);
 
     self.rollCounts[heldDie.tag] = @([self.rollCounts[heldDie.tag] integerValue] + 1);
     NSLog(@"RollCount for %li: %@", (long)heldDie.tag, self.rollCounts[heldDie.tag]);
 
 
     [self calculateScore];
-
-
 }
 
 - (void)calculateScore {
